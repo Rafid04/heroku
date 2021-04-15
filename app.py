@@ -6,15 +6,15 @@ import sys
 from boto.s3.connection import S3Connection
 import os
 from dotenv import load_dotenv
-from alpha_vantage import timeseries
+from alpha_vantage.timeseries import TimeSeries
 
 load_dotenv()
 
 
 
 def Data(Ticker):
-    API_key = S3Connection(os.environ('API')) 
-    allData = timeseries(API_key, output_format='pandas') 
+    API_key = os.environ.get('key')
+    allData = TimeSeries(API_key, output_format='pandas')
     data, meta_data= allData.get_monthly(Ticker)
     data.drop(['1. open', '2. high','3. low'], axis=1, inplace=True)
     data.rename(columns={'4. close' : 'price', '5. volume': 'volume'}, inplace=True)
