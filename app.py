@@ -13,7 +13,7 @@ load_dotenv()
 
 
 def Data(Ticker):
-    API_key = S3Connection(os.environ.get['key'])
+    API_key = environ['key']
     allData = TimeSeries(API_key, output_format='pandas')
     data, meta_data= allData.get_monthly(Ticker)
     data.drop(['1. open', '2. high','3. low'], axis=1, inplace=True)
