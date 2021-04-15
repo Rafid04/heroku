@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd 
 import datetime
-import altair as alt
 import sys
-from boto.s3.connection import S3Connection
+import plotly
 import os
 from dotenv import load_dotenv
 from alpha_vantage.timeseries import TimeSeries
