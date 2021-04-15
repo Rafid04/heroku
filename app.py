@@ -43,7 +43,7 @@ if click:
             x = GraphData['date'].tolist()
             y = GraphData['price'].tolist()
             st.write(GraphData)
-            fig = px.line(GraphData, x= x, y= y )
+            fig = plotly.express.line(GraphData, x= x, y= y )
             fig.update_layout(
             title= Ticker + " Stock Price History",
             xaxis_title="Time Line",
