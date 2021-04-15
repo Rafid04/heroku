@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 import altair as alt
 import sys
+import boto
 import plotly.express as px 
 import os
 from dotenv import load_dotenv
@@ -13,7 +14,7 @@ load_dotenv()
 
 
 def Data(Ticker):
-    API_key = System.getenv('API')
+    API_key = boto.s3Connection(os.environ.get('API'))
     allData = timeseries(API_key, output_format='pandas') 
     data, meta_data= allData.get_monthly(Ticker)
     data.drop(['1. open', '2. high','3. low'], axis=1, inplace=True)
