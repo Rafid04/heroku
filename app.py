@@ -1,4 +1,4 @@
-from alpha_vantage.timeseries import TimeSeries 
+import alpha_vantage
 import streamlit as st
 import pandas as pd 
 import datetime
@@ -14,7 +14,7 @@ load_dotenv()
 
 def Data(Ticker):
     API_key = os.environ.get('API')
-    allData = TimeSeries(API_key, output_format='pandas')
+    allData = alpha_vantage.TimeSeries(API_key, output_format='pandas')
     data, meta_data= allData.get_monthly(Ticker)
     data.drop(['1. open', '2. high','3. low'], axis=1, inplace=True)
     data.rename(columns={'4. close' : 'price', '5. volume': 'volume'}, inplace=True)
