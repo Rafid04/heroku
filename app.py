@@ -1,4 +1,3 @@
-import alpha_vantage
 import streamlit as st
 import pandas as pd 
 import datetime
@@ -7,6 +6,7 @@ import sys
 import plotly.express as px 
 import os
 from dotenv import load_dotenv
+from alpha_vantage import timeseries
 
 load_dotenv()
 
@@ -14,7 +14,7 @@ load_dotenv()
 
 def Data(Ticker):
     API_key = os.environ.get('API')
-    allData = alpha_vantage.TimeSeries(API_key, output_format='pandas')
+    allData = timeseries(API_key, output_format='pandas') 
     data, meta_data= allData.get_monthly(Ticker)
     data.drop(['1. open', '2. high','3. low'], axis=1, inplace=True)
     data.rename(columns={'4. close' : 'price', '5. volume': 'volume'}, inplace=True)
