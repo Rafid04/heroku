@@ -1,4 +1,5 @@
 pandas
+alpha_vantage
 streamlit
 plotly
 python-dotenv
