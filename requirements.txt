@@ -2,6 +2,7 @@ pandas
 alpha_vantage
 streamlit
 plotly
+plotly.express
 boto
 python-dotenv
 altair
