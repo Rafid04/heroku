@@ -36,7 +36,6 @@ if click:
         st.warning("Please input valid Ticker Sympol")
     
     else:
-        print(Ticker)
         try:
             Data = Data(Ticker)
             GraphData= Data[['date', 'price','volume','year']]
